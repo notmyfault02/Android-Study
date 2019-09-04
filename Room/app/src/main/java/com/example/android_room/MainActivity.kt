@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android_room.db.AppDatabase
 import com.example.android_room.db.entity.MemoEntity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_memo.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onLongClick
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,12 +42,25 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        var deleteRunnable = Runnable {
+            try {
+                appDB?.MemoDao()?.deleteAll(memoList)
+            } catch (e: Exception) {
+                Log.d("main", "error $e")
+            }
+        }
+
         val thread = Thread(r)
         thread.start()
 
         main_memo_btn.onClick {
             Log.d("main", "click")
             goMemo()
+        }
+
+        main_delete_btn.onClick {
+            val delThread = Thread(deleteRunnable)
+            delThread.start()
         }
     }
 

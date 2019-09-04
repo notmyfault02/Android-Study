@@ -1,16 +1,16 @@
 package com.example.android_room.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.android_room.db.entity.MemoEntity
 
 @Dao
 interface MemoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg memo: MemoEntity)
+    fun insertMemo(vararg memo: MemoEntity)
 
     @Query ("SELECT * FROM memoentity")
     fun getAll(): List<MemoEntity>
+
+    @Delete
+    fun deleteAll(memo: List<MemoEntity>)
 }

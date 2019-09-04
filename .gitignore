@@ -11,3 +11,7 @@ Room/app/.idea/modules.xml
 Room/app/.idea/vcs.xml
 Room/app/local.properties
 .DS_Store
+*.xml
+Room/app/.idea/caches/build_file_checksums.ser
+Room/app/.idea/libraries/Gradle__androidx_room_room_common_2_2_0_beta01_jar.xml
+Room/app/.idea/caches/build_file_checksums.ser

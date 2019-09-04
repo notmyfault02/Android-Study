@@ -26,9 +26,8 @@ class MemoActivity : AppCompatActivity() {
             val newMemo = MemoEntity()
             newMemo.title = memo_title_et.text.toString()
             newMemo.content = memo_content_et.text.toString()
-
             newMemo.date = "${calendar.get(GregorianCalendar.YEAR)}.${calendar.get(GregorianCalendar.MONTH)}.${calendar.get(GregorianCalendar.DATE)}"
-            appDb?.MemoDao()?.insertAll(newMemo)
+            appDb?.MemoDao()?.insertMemo(newMemo)
             Log.d("memo", "run")
         }
 
