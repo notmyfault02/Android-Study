@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.android_room.db.dao.MemoDao
 import com.example.android_room.db.entity.MemoEntity
 
-@Database(entities = arrayOf(MemoEntity::class), version = 1)
+@Database(entities = [MemoEntity::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun MemoDao(): MemoDao
 
@@ -17,7 +17,8 @@ abstract class AppDatabase: RoomDatabase() {
         fun getInstance(context: Context): AppDatabase? {
             if (INSTANCE == null) {
                 synchronized(AppDatabase::class) {
-                    INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "memo.db").build()
+                    INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "memo.db")
+                        .build()
                 }
             }
 

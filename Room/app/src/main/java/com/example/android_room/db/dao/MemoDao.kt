@@ -12,5 +12,5 @@ interface MemoDao {
     fun insertAll(vararg memo: MemoEntity)
 
     @Query ("SELECT * FROM memoentity")
-    fun getAll(): Array<MemoEntity>
+    fun getAll(): List<MemoEntity>
 }

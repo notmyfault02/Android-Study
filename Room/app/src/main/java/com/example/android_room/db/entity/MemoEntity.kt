@@ -4,9 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class MemoEntity(
+class MemoEntity(
         @PrimaryKey(autoGenerate = true)
+        var id: Int,
         var title: String,
         var content: String,
         var date: String
-)
+) {
+        constructor(): this(0,"", "", "")
+}
